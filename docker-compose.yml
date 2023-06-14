@@ -1,0 +1,18 @@
+
+version: '3'
+services:
+  api:
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    depends_on:
+      - mariadb
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: contraseña
+      MYSQL_DATABASE: mydatabase
+    volumes:
+      - ./data:/var/lib/mysql
